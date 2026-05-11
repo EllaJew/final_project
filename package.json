@@ -1,0 +1,28 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "Final Project Vercel App",
+  "homepage": "https://github.com/EllaJew/final_project#readme",
+  "bugs": {
+    "url": "https://github.com/EllaJew/final_project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EllaJew/final_project.git"
+  },
+  "license": "ISC",
+  "author": "Ella Jew",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js,json,html server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.4",
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
