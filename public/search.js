@@ -1,5 +1,3 @@
-let barChart;
-
 async function searchFruit() {
     const fruit = document.getElementById("fruitInput").value;
 
@@ -15,9 +13,13 @@ async function searchFruit() {
         <p>Fat: ${data.fat}</p>
         <p>Calories: ${data.calories}</p>
         <p>Sugar: ${data.sugar}</p>`;
+    
+    fillChart(data);
 }
 
-function nutritionChart(data) {
+let barChart;
+
+function fillChart(data) {
     document.getElementById("temporaryOutput").innerHTML =
         `<h3>${data.name}</h3>
         <p>Carbs: ${data.carbs}</p>

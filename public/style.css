@@ -1,6 +1,10 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: lightpink;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 #nav {
