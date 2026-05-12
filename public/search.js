@@ -1,7 +1,7 @@
 async function searchFruit() {
-    const fruit = document.getElementById("fruitInput").value();
+    const fruit = document.getElementById("fruitInput").value;
 
-    const res = await fetch(`fruit/${fruit}`);
+    const res = await fetch(`/fruit/${fruit}`);
     const data = await res.json();
 
     console.log("Data:", data);
@@ -15,4 +15,6 @@ async function searchFruit() {
     <p>Sugar: ${data.sugar}</p>`;
 }
 
-searchFruit();
+window.onload = function () {
+    searchFruit();
+};
