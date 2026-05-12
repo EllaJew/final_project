@@ -18,28 +18,35 @@ const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 app.get('/recipes', async (req, res) => {
     console.log("Getting all recipes");
 
-    const { data, error } = await supabase.from("recipes").select();
+   try {
+        const { data, error } = await supabase.from("recipes").select();
 
-    console.log("received data", data);
-    res.json(data);
+        if (error) throw error;
+
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+
 });
 
 //POST to Supabase
 app.post('/recipes', async (req, res) => {
     console.log("adding recipe");
-    console.log(`request: ${JSON.stringify(req.body)}`);
-    
-    const recipe_name = req.body.recipe_name;
-    const ingredients = req.body.ingredients;
-    const instructions = req.body.instructions;
+   try {
+        const { recipe_name, ingredients, instructions } = req.body;
 
-    const { data, error } = await supabase.from("recipes").insert({
-        recipe_name: recipe_name,
-        ingredients: ingredients,
-        instructions: instructions
-    }).select();
+        const { data, error } = await supabase
+            .from("recipes")
+            .insert([{ recipe_name, ingredients, instructions }])
+            .select();
 
-    res.json(data);
+        if (error) throw error;
+
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 //Using external API
@@ -50,7 +57,19 @@ app.get("/fruit/:name", async (req, res) => {
         `https://fruityvice.com/api/fruit/${fruit}`
     );
 
+    if (!nutritionInfo.ok) {
+            return res.status(404).json({
+                error: "Fruit not found in Fruityvice API"
+            });
+        }
+
     const data = await nutritionInfo.json();
+
+    if (!data || !data.nutritions) {
+            return res.status(500).json({
+                error: "Invalid API response structure"
+            });
+        }
 
     const specificInfo = {
         name: data.name,
