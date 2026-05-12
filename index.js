@@ -4,7 +4,6 @@ const supabaseClient = require("@supabase/supabase-js");
 const dotenv = require("dotenv");
 
 const app = express();
-const port = 3000;
 dotenv.config()
 
 app.use(express.json());
@@ -47,6 +46,4 @@ app.post('/recipes', async (req, res) => {
     res.json(data);
 });
 
-app.listen(port, () => {
-    console.log(`App is available on port ${port}`);
-});
+module.exports = app;
