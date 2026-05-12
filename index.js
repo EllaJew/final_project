@@ -7,17 +7,25 @@ const app = express();
 const port = 3000;
 dotenv.config()
 
+app.use(express.json());
+app.use(express.static("public"));
 app.use(bodyParser.json());
 
 const supabaseURL = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 
+const path = require("path");
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "search_page.html"));
+});
+
 app.get('/recipes', async (req, res) => {
     console.log("Getting all recipes");
 
     const { data, error } = await supabase.from("recipes").select();
-    
+
     console.log("received data", data);
     res.json(data);
 });
