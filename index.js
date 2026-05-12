@@ -83,3 +83,5 @@ app.get("/fruit/:name", async (req, res) => {
     res.json(specificInfo);
 
 });
+
+module.exports = app;
