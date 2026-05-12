@@ -16,6 +16,6 @@ async function searchFruit() {
 }
 
 window.onload = () => {
-    document.getElementById("searchBtn")
+    document.getElementById("searchButton")
         .addEventListener("click", searchFruit);
 };
