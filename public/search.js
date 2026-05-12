@@ -79,8 +79,9 @@ function showRecipes(data) {
                     <p>${recipe.strInstructions.slice(0, 100)}...</p>
                 </div>
             `;
-    });
-}
+        });
+    }
+    
     document.getElementById("recipeOutput").innerHTML = html;
 }
 

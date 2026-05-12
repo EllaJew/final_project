@@ -77,11 +77,11 @@ app.get("/fruit/:name", async (req, res) => {
   });
 });
 
-app.get("recipes/:fruit", async (req, res) => {
+app.get("/recipes/:fruit", async (req, res) => {
     const fruit = req.params.fruit;
 
     try {
-        const response = await fetch(`http://www.themealdb.com/api/json/v1/1/search.php?s=${fruit}`);
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${fruit}`);
         const data = await response.json();
         
         res.json(data);
