@@ -15,6 +15,7 @@ async function searchFruit() {
     <p>Sugar: ${data.sugar}</p>`;
 }
 
-window.onload = function () {
-    searchFruit();
+window.onload = () => {
+    document.getElementById("searchBtn")
+        .addEventListener("click", searchFruit);
 };
