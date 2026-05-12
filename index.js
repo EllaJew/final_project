@@ -28,6 +28,10 @@ app.get('/about', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'about_page.html'));
 });
 
+app.get('/style', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about_page.html'));
+});
+
 //GET from Supabase
 app.get('/recipes', async (req, res) => {
     console.log("Getting all recipes");
