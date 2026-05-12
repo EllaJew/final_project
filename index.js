@@ -14,12 +14,7 @@ const supabaseURL = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 
-const path = require("path");
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "search_page.html"));
-});
-
+//GET from Supabase
 app.get('/recipes', async (req, res) => {
     console.log("Getting all recipes");
 
@@ -29,6 +24,7 @@ app.get('/recipes', async (req, res) => {
     res.json(data);
 });
 
+//POST to Supabase
 app.post('/recipes', async (req, res) => {
     console.log("adding recipe");
     console.log(`request: ${JSON.stringify(req.body)}`);
@@ -46,4 +42,25 @@ app.post('/recipes', async (req, res) => {
     res.json(data);
 });
 
-module.exports = app;
+//Using external API
+app.get("/fruit/:name", async (req, res) => {
+    const fruit = req.params.name;
+
+    const nutritionInfo = await fetch(
+        `https://fruityvice.com/api/fruit/${fruit}`
+    );
+
+    const data = await nutritionInfo.json();
+
+    const specificInfo = {
+        name: data.name,
+        carbs: data.nutritions.carbohydrates,
+        protein: data.nutritions.protein,
+        fat: data.nutritions.fat,
+        calories: data.nutritions.calories,
+        sugar: data.nutritions.sugar
+    };
+
+    res.json(specificInfo);
+
+});
