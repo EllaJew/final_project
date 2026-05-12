@@ -1,10 +1,10 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: lightpink;
+    background-color: rgb(245, 190, 198);
 }
 
 #nav {
-    background-color: springgreen;
+    background-color: rgb(85, 237, 161);
     color: white;
     padding: 10px;
     text-align: center;

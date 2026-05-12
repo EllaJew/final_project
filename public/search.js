@@ -47,7 +47,7 @@ function fillChart(data) {
                 label: `${data.name} Nutrition (based on 100 grams)`,
                 data: [data.carbs, data.protein, data.fat, data.calories,
                        data.sugar]}],
-                backgroundColor: "rgba(0, 200, 100, 0.6)"
+                backgroundColor: "rgba(6, 108, 57, 0.6)"
         },
     });
 }
@@ -81,11 +81,14 @@ function showRecipes(data) {
             `;
         });
     }
-    
+
     document.getElementById("recipeOutput").innerHTML = html;
 }
 
 window.onload = () => {
     document.getElementById("searchButton")
-        .addEventListener("click", searchFruit);
+        .addEventListener("click", () => {
+            searchFruit();
+            getRecipes();
+    });
 };
