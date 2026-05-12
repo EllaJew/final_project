@@ -26,7 +26,7 @@ function nutritionChart(data) {
         <p>Calories: ${data.calories}</p>
         <p>Sugar: ${data.sugar}</p>`;
     
-        const chart = document.getElementById("barChart");
+        const chart = document.getElementById("barChart").getContext("2d");
         
         if (barChart) {
             barChart.destroy();}
