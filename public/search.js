@@ -15,6 +15,9 @@ async function searchFruit() {
         <p>Sugar: ${data.sugar}</p>`;
     
     fillChart(data);
+
+    const imageUrl = `https://www.themealdb.com/images/ingredients/${fruit}.png`;
+    document.getElementById("fruitImage").src = imageUrl;
     
     document.getElementById("fruitImage").onerror = function () {
         this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg";
