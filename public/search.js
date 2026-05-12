@@ -1,42 +1,18 @@
-async function loadFruitInfo() {
-    fetch('/recipes')
-        .then((result) => result.json())
-        .then((resultJson) => {
-            console.log(resultJson);
+async function searchFruit() {
+    const fruit = document.getElementById("fruitInput").value();
 
-            const table = document.createElement('table');
-            table.setAttribute("id", "fruitInfo");
+    const res = await fetch(`fruit/${fruit}`);
+    const data = await res.json();
 
-            const tableRow = document.createElement('tr');
+    console.log("Data:", data);
 
-            const tableHeadingname = document.createElement('th');
-            tableHeadingname.innerHTML = "Name";
-
-            const tableHeadingingredients = document.createElement('th');
-            tableHeadingingredients.innerHTML = "Ingredients";
-
-            tableRow.appendChild(tableHeadingname);
-            tableRow.appendChild(tableHeadingingredients);
-
-            table.appendChild(tableRow);
-
-            resultJson.forEach((recipe) => {
-                const recipeTableRow = document.createElement('tr');
-
-                const recipeTableName = document.createElement('td');
-                const recipeTableIngredients = document.createElement('td');
-
-                recipeTableName.innerHTML = recipe.recipe_name;
-                recipeTableIngredients.innerHTML = recipe.ingredients;
-
-                recipeTableRow.appendChild(recipeTableName);
-                recipeTableRow.appendChild(recipeTableIngredients);
-
-                table.appendChild(recipeTableRow);
-            });
-
-            document.body.appendChild(table);
-        });
+    document.getElementById("temporaryOutput").innerHTML =
+    `<h3>${data.name}</h3>
+    <p>Carbs: ${data.carbs}</p>
+    <p>Protein: ${data.protein}</p>
+    <p>Fat: ${data.fat}</p>
+    <p>Calories: ${data.calories}</p>
+    <p>Sugar: ${data.sugar}</p>`;
 }
 
-loadFruitInfo();
+searchFruit();
