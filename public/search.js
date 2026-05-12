@@ -6,7 +6,7 @@ async function searchFruit() {
 
     console.log("Data:", data);
 
-    document.getElementById("temporaryOutput").innerHTML =
+    document.getElementById("nutritionOutput").innerHTML =
         `<h3>${data.name}</h3>
         <p>Carbs: ${data.carbs}</p>
         <p>Protein: ${data.protein}</p>
@@ -15,12 +15,16 @@ async function searchFruit() {
         <p>Sugar: ${data.sugar}</p>`;
     
     fillChart(data);
+    
+    document.getElementById("fruitImage").onerror = function () {
+        this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg";
+    };
 }
 
 let barChart;
 
 function fillChart(data) {
-    document.getElementById("temporaryOutput").innerHTML =
+    document.getElementById("nutritionOutput").innerHTML =
         `<h3>${data.name}</h3>
         <p>Carbs: ${data.carbs}</p>
         <p>Protein: ${data.protein}</p>
@@ -37,9 +41,10 @@ function fillChart(data) {
             type: "bar",
             data: {labels: ["Carbs", "Protein", "Fat", "Calories", "Sugar"],
             datasets: [{
-                label: `${data.name} Nutrition`,
+                label: `${data.name} Nutrition (based on 100 grams)`,
                 data: [data.carbs, data.protein, data.fat, data.calories,
-                       data.sugar]}]
+                       data.sugar]}],
+                backgroundColor: "rgba(0, 200, 100, 0.6)"
         },
     });
 }
