@@ -1,0 +1,27 @@
+#nav {
+    background-color: springgreen;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav li {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+}
+
+nav li:hover {
+  background-color: black;
+  color: white;
+}
+
+nav a {
+  text-decoration: none;
+  color: blue;
+}
+
+nav a:hover {
+  background-color: black;
+  color: white;
+}

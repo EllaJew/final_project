@@ -17,7 +17,15 @@ const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 const path = require("path");
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "search_page.html"));
+    res.sendFile(path.join(__dirname, "public", "home_page.html"));
+});
+
+app.get('/search', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'search_page.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about_page.html'));
 });
 
 //GET from Supabase
