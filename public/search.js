@@ -52,6 +52,38 @@ function fillChart(data) {
     });
 }
 
+async function getRecipes() {
+    const fruit = document.getElementById("fruitInput").value;
+
+    const res = await fetch(`/recipes/${fruit}`);
+    const data = await res.json();
+
+    console.log("Data:", data);
+
+    showRecipes(data);
+}
+
+function showRecipes(data) {
+    const meals = data.meals;
+
+    let html = "";
+
+    if (!meals) {
+        html = "<p>No recipes found</p>";
+    } else {
+        meals.forEach(recipe => {
+            html += `
+                <div class="recipe-card">
+                    <h3>${recipe.strMeal}</h3>
+                    <img src="${recipe.strMealThumb}" width="150">
+                    <p>${recipe.strInstructions.slice(0, 100)}...</p>
+                </div>
+            `;
+    });
+}
+    document.getElementById("nutritionOutput").innerHTML = html;
+}
+
 window.onload = () => {
     document.getElementById("searchButton")
         .addEventListener("click", searchFruit);
