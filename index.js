@@ -15,9 +15,11 @@ const supabaseURL = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 
+const path = require("path");
+
 app.get("/", (req, res) => {
-    res.sendFile("/public/search_page.html", { root: __dirname });
-})
+    res.sendFile(path.join(__dirname, "public", "search_page.html"));
+});
 
 app.get('/recipes', async (req, res) => {
     console.log("Getting all recipes");
