@@ -81,7 +81,7 @@ function showRecipes(data) {
             `;
     });
 }
-    document.getElementById("nutritionOutput").innerHTML = html;
+    document.getElementById("recipeOutput").innerHTML = html;
 }
 
 window.onload = () => {
