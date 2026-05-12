@@ -4,6 +4,7 @@ const supabaseClient = require("@supabase/supabase-js");
 const dotenv = require("dotenv");
 
 const app = express();
+const port = 3000;
 dotenv.config()
 
 app.use(express.json());
@@ -14,11 +15,9 @@ const supabaseURL = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 
-const path = require("path");
-
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "search_page.html"));
-});
+    res.sendFile("/public/search_page.html", { root: __dirname });
+})
 
 app.get('/recipes', async (req, res) => {
     console.log("Getting all recipes");
@@ -46,4 +45,6 @@ app.post('/recipes', async (req, res) => {
     res.json(data);
 });
 
-module.exports = app;
+app.listen(port, () => {
+    console.log(`App is available on port ${port}`);
+});
