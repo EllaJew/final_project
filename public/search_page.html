@@ -2,17 +2,17 @@
 
 <html>
     <head>
-        <title>Fruit For Thought</title>
+        <title style = "text-align:center;">Fruit For Thought</title>
         <link rel = "stylesheet" href = "/style.css">
     </head>
 
     <body>
-        <h1>Fruit For Thought</h1>
+        <h1 style = "text-align:center;">Fruit For Thought</h1>
         <nav id = "nav">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/search">Search</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href = "/">Home</a></li>
+                <li><a href = "/search">Search</a></li>
+                <li><a href = "/about">About</a></li>
             </ul>
         </nav>
 
@@ -23,7 +23,12 @@
 
         <div id = "temporaryOutput"></div>
 
+        <div style = "width: 100%; margin: auto;">
+            <canvas id = "barChart"></canvas>
+        </div>
+
     <script src = "search.js" defer></script>
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     </body>
 
