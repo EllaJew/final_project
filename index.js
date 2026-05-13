@@ -92,7 +92,8 @@ app.get("/recipes/:fruit", async (req, res) => {
 
 app.post("/user_history", async (req, res) => {
     const { fruit } = req.body;
-    const { data, error } = await supabase.from("userHistory").insert([{ fruit_searched: fruit }]);
+    const { data, error } = await supabase.from("user_history")
+                            .insert([{ fruit_searched: fruit, time_stamp: new Date().toISOString()}]);
 
     if (error) {
         return res.status(500).json({ error });
@@ -102,7 +103,7 @@ app.post("/user_history", async (req, res) => {
 });
 
 app.get("/user_history", async (req, res) => {
-    const { data, error } = await supabase.from("userHistory").select("*").order("time_stamp", { ascending: false });
+    const { data, error } = await supabase.from("user_history").select("*").order("time_stamp", { ascending: false });
 
      if (error) {
         return res.status(500).json({ error });

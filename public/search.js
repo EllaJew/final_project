@@ -22,16 +22,6 @@ async function searchFruit() {
     document.getElementById("fruitImage").onerror = function () {
         this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg";
     };
-
-    await fetch("/user_history", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            fruit: data.name
-        })
-    });
 }
 
 let barChart;
@@ -62,9 +52,7 @@ function fillChart(data) {
     });
 }
 
-async function getRecipes() {
-    const fruit = document.getElementById("fruitInput").value;
-
+async function getRecipes(fruit) {
     const res = await fetch(`/recipes/${fruit}`);
     const data = await res.json();
 
@@ -95,24 +83,51 @@ function showRecipes(data) {
     document.getElementById("recipeOutput").innerHTML = html;
 }
 
-async function loadSearches() {
+async function saveSearch() {
+    const fruit = document.getElementById("fruitInput").value;
+    
+    await fetch("/user_history", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ fruit })
+    });
+}
+
+async function updateHome() {
     const res = await fetch("/user_history");
     const searches = await res.json();
 
-    let html = "<h3>Recent Searches</h3>";
+    const body = document.getElementById("tableOutput");
+
+    body.innerHTML = "";
 
     searches.forEach(search => {
-        html += `<p>${search.fruit_searched}</p>`;
-    });
+        const row = document.createElement("tr");
 
-    document.getElementById("recentSearches").innerHTML = html;
+        const idCell = document.createElement("td");
+        idCell.textContent = search.id;
+
+        const fruitCell = document.createElement("td");
+        fruitCell.textContent = search.fruit_searched;
+
+        const timeCell = document.createElement("td");
+        timeCell.textContent = new Date(item.time_stamp).toLocaleString();
+
+        row.appendChild(idCell);
+        row.appendChild(fruitCell);
+        row.appendChild(timeCell);
+
+        body.appendChild(row);
+
+    });
 }
 
 window.onload = () => {
     document.getElementById("searchButton")
         .addEventListener("click", () => {
-            await searchFruit();
-            await loadSearches();
-            getRecipes();
+            await searchFruit(fruit);
+            await getRecipes(fruit);
+            await saveSearch(fruit);
+            await updateHistory();
     });
 };
