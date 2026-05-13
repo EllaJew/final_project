@@ -90,9 +90,9 @@ app.get("/recipes/:fruit", async (req, res) => {
     }
 });
 
-app.post("/userHistory", async (req, res) => {
+app.post("/user_history", async (req, res) => {
     const { fruit } = req.body;
-    const { data, error } = await supabase.from("userHistory").insert([{ fruit: fruit }]);
+    const { data, error } = await supabase.from("userHistory").insert([{ fruit_searched: fruit }]);
 
     if (error) {
         return res.status(500).json({ error });
@@ -101,13 +101,13 @@ app.post("/userHistory", async (req, res) => {
     res.json(data);
 });
 
-app.get("/userHistory", async (req, res) => {
-    const { data, error } = await supabase.from("userHistory").select("*");
+app.get("/user_history", async (req, res) => {
+    const { data, error } = await supabase.from("userHistory").select("*").order("time_stamp", { ascending: false });
 
      if (error) {
         return res.status(500).json({ error });
     }
-    
+
     res.json(data);
 })
 

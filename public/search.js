@@ -23,7 +23,7 @@ async function searchFruit() {
         this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg";
     };
 
-    await fetch("/userHistory", {
+    await fetch("/user_history", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -96,13 +96,13 @@ function showRecipes(data) {
 }
 
 async function loadSearches() {
-    const res = await fetch("/userHistory");
+    const res = await fetch("/user_history");
     const searches = await res.json();
 
     let html = "<h3>Recent Searches</h3>";
 
     searches.forEach(search => {
-        html += `<p>${search.fruit}</p>`;
+        html += `<p>${search.fruit_searched}</p>`;
     });
 
     document.getElementById("recentSearches").innerHTML = html;
