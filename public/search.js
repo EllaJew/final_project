@@ -114,6 +114,51 @@ async function updateHome() {
     });
 }
 
+const fruit_list = [apple, lime, lemon, cherry, banana, orange, pineapple, avocado];
+
+async function getFruitImage(fruit) {
+    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${fruit}`);
+    const data = await res.json();
+}
+
+async function createSlider() {
+    const slides = await Promise.all(
+        fruit_list.map(async fruit => {
+            const image = await getFruitImage(fruit);
+            return {image: image};
+        })
+    );
+    
+    return slides;
+}
+
+async function loadSlider() {
+    const slides = await createSlider();
+    const wrapper = document.querySelector(".swiper-wrapper");
+    wrapper.innerHTML = "";
+
+    slides.forEach(fruit => {
+        const slide = document.createElement("div");
+        
+        slide.className = "swiper-slide";
+        slide.innerHTML = `<img src="${fruit.image}" width="150" />`;
+
+        wrapper.appendChild(slide);
+    });
+}
+
+const swiper = new Swiper(".randomFruitSwiper", {
+    loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+    }
+});
+
 window.onload = () => {
     const button = document.getElementById("searchButton");
 
@@ -124,6 +169,7 @@ window.onload = () => {
             await searchFruit(fruit);
             await getRecipes(fruit);
             await saveSearch();
+            await loadSlider();
             
             if (document.getElementById("tableOutput")) {
                 await updateHome();
