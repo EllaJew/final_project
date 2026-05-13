@@ -113,14 +113,17 @@ async function updateHome() {
 }
 
 window.onload = () => {
-    document.getElementById("searchButton")
-        .addEventListener("click", async () => {
-            
+    const button = document.getElementById("searchButton");
+
+    if (button) {
+        button.addEventListener("click", async () => {
             const fruit = document.getElementById("fruitInput").value;
 
             await searchFruit(fruit);
             await getRecipes(fruit);
-            await saveSearch(fruit);
+            await saveSearch();
             await updateHome();
-    });
+        });
+    }
+    updateHome();
 };
