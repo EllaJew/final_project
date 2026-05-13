@@ -1,4 +1,4 @@
-async function searchFruit() {
+async function searchFruit(fruit) {
     const fruit = document.getElementById("fruitInput").value;
 
     const res = await fetch(`/fruit/${fruit}`);
@@ -27,27 +27,19 @@ async function searchFruit() {
 let barChart;
 
 function fillChart(data) {
-    document.getElementById("nutritionOutput").innerHTML =
-        `<h3>${data.name}</h3>
-        <p>Carbs: ${data.carbs}</p>
-        <p>Protein: ${data.protein}</p>
-        <p>Fat: ${data.fat}</p>
-        <p>Calories: ${data.calories}</p>
-        <p>Sugar: ${data.sugar}</p>`;
+    const chart = document.getElementById("barChart").getContext("2d");
     
-        const chart = document.getElementById("barChart").getContext("2d");
-        
-        if (barChart) {
-            barChart.destroy();}
+    if (barChart) {
+        barChart.destroy();}
 
-        barChart = new Chart(chart, {
-            type: "bar",
-            data: {labels: ["Carbs", "Protein", "Fat", "Calories", "Sugar"],
-            datasets: [{
-                label: `${data.name} Nutrition (based on 100 grams)`,
-                data: [data.carbs, data.protein, data.fat, data.calories,
-                       data.sugar]}],
-                backgroundColor: "rgba(6, 108, 57, 0.6)"
+    barChart = new Chart(chart, {
+        type: "bar",
+        data: {labels: ["Carbs", "Protein", "Fat", "Calories", "Sugar"],
+        datasets: [{
+            label: `${data.name} Nutrition (based on 100 grams)`,
+            data: [data.carbs, data.protein, data.fat, data.calories,
+                    data.sugar]}],
+            backgroundColor: "rgba(6, 108, 57, 0.6)"
         },
     });
 }
@@ -111,7 +103,7 @@ async function updateHome() {
         fruitCell.textContent = search.fruit_searched;
 
         const timeCell = document.createElement("td");
-        timeCell.textContent = new Date(item.time_stamp).toLocaleString();
+        timeCell.textContent = new Date(search.time_stamp).toLocaleString();
 
         row.appendChild(idCell);
         row.appendChild(fruitCell);
@@ -124,13 +116,13 @@ async function updateHome() {
 
 window.onload = () => {
     document.getElementById("searchButton")
-        .addEventListener("click", () => {
+        .addEventListener("click", async () => {
             
             const fruit = document.getElementById("fruitInput").value;
 
             await searchFruit(fruit);
             await getRecipes(fruit);
             await saveSearch(fruit);
-            await updateHistory();
+            await updateHome();
     });
 };

@@ -29,33 +29,6 @@ app.get("/about", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "about_page.html"));
 });
 
-app.get("/recipes", async (req, res) => {
-    try {
-    const { data, error } = await supabase.from("recipes").select();
-    if (error) throw error;
-    res.json(data);
-    } catch (err) {
-    res.status(500).json({ error: err.message });
-    }
-});
-
-app.post("/recipes", async (req, res) => {
-    try {
-    const { recipe_name, ingredients, instructions } = req.body;
-
-    const { data, error } = await supabase
-        .from("recipes")
-        .insert([{ recipe_name, ingredients, instructions }])
-        .select();
-
-    if (error) throw error;
-
-    res.json(data);
-    } catch (err) {
-    res.status(500).json({ error: err.message });
-    }
-});
-
 app.get("/fruit/:name", async (req, res) => {
     const fruit = req.params.name;
 
