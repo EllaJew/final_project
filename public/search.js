@@ -111,8 +111,8 @@ async function loadSearches() {
 window.onload = () => {
     document.getElementById("searchButton")
         .addEventListener("click", () => {
-            searchFruit();
+            await searchFruit();
+            await loadSearches();
             getRecipes();
-            loadSearches();
     });
 };
