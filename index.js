@@ -90,4 +90,25 @@ app.get("/recipes/:fruit", async (req, res) => {
     }
 });
 
+app.post("/userHistory", async (req, res) => {
+    const { fruit } = req.body;
+    const { data, error } = await supabase.from("userHistory").insert([{ fruit: fruit }]);
+
+    if (error) {
+        return res.status(500).json({ error });
+    }
+
+    res.json(data);
+});
+
+app.get("/userHistory", async (req, res) => {
+    const { data, error } = await supabase.from("userHistory").select("*");
+
+     if (error) {
+        return res.status(500).json({ error });
+    }
+    
+    res.json(data);
+})
+
 module.exports = app;

@@ -22,6 +22,16 @@ async function searchFruit() {
     document.getElementById("fruitImage").onerror = function () {
         this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg";
     };
+
+    await fetch("/userHistory", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fruit: data.name
+        })
+    });
 }
 
 let barChart;
@@ -85,10 +95,24 @@ function showRecipes(data) {
     document.getElementById("recipeOutput").innerHTML = html;
 }
 
+async function loadSearches() {
+    const res = await fetch("/userHistory");
+    const searches = await res.json();
+
+    let html = "<h3>Recent Searches</h3>";
+
+    searches.forEach(search => {
+        html += `<p>${search.fruit}</p>`;
+    });
+
+    document.getElementById("recentSearches").innerHTML = html;
+}
+
 window.onload = () => {
     document.getElementById("searchButton")
         .addEventListener("click", () => {
             searchFruit();
             getRecipes();
+            loadSearches();
     });
 };
