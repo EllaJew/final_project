@@ -87,6 +87,8 @@ async function updateHome() {
     const res = await fetch("/user_history");
     const searches = await res.json();
 
+    console.log("RAW RESPONSE:", searches);
+
     const body = document.getElementById("tableOutput");
 
     body.innerHTML = "";
