@@ -125,6 +125,9 @@ async function updateHome() {
 window.onload = () => {
     document.getElementById("searchButton")
         .addEventListener("click", () => {
+            
+            const fruit = document.getElementById("fruitInput").value;
+
             await searchFruit(fruit);
             await getRecipes(fruit);
             await saveSearch(fruit);
