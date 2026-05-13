@@ -103,7 +103,7 @@ async function updateHome() {
         fruitCell.textContent = search.fruit_searched;
 
         const timeCell = document.createElement("td");
-        timeCell.textContent = new Date(search.time_stamp).toUTCString();
+        timeCell.textContent = new Date(search.time_stamp).toLocaleString("en-US", {timeZone: "America/New_York"});
 
         row.appendChild(idCell);
         row.appendChild(fruitCell);
