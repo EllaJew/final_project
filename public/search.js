@@ -1,6 +1,4 @@
 async function searchFruit(fruit) {
-    const fruit = document.getElementById("fruitInput").value;
-
     const res = await fetch(`/fruit/${fruit}`);
     const data = await res.json();
 
