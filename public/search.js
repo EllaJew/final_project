@@ -124,8 +124,14 @@ window.onload = () => {
             await searchFruit(fruit);
             await getRecipes(fruit);
             await saveSearch();
-            await updateHome();
+            
+            if (document.getElementById("tableOutput")) {
+                await updateHome();
+            }
         });
     }
-    updateHome();
+    
+    if (document.getElementById("tableOutput")) {
+        updateHome();
+    }
 };
