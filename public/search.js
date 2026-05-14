@@ -37,15 +37,15 @@ function fillChart(data) {
             label: `${data.name} Nutrition (based on 100 grams)`,
             options: {backgroundColor: "white"},
             data: [data.carbs, data.protein, data.fat, data.calories,
-                    data.sugar]}],
-            backgroundColor: [
-                "rgba(249, 47, 91, 0.78)",
-                "rgba(160, 214, 249, 0.89)", 
-                "rgba(75, 192, 192, 0.77)",
-                "rgb(254, 252, 121)",
-                "rgb(0, 234, 255)",
-                "rgba(236, 29, 229, 0.92)",
-            ]
+                    data.sugar],
+                    backgroundColor: [
+                        "rgba(249, 47, 91, 0.78)",
+                        "rgba(160, 214, 249, 0.89)", 
+                        "rgba(75, 192, 192, 0.77)",
+                        "rgb(254, 252, 121)",
+                        "rgb(0, 234, 255)",
+                        "rgba(154, 14, 149, 0.63)"]
+            }],
         },
     });
 }
