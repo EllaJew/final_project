@@ -38,13 +38,7 @@ function fillChart(data) {
             options: {backgroundColor: "white"},
             data: [data.carbs, data.protein, data.fat, data.calories,
                     data.sugar],
-                    backgroundColor: [
-                        "rgba(249, 47, 91, 0.78)",
-                        "rgba(160, 214, 249, 0.89)", 
-                        "rgba(75, 192, 192, 0.77)",
-                        "rgb(254, 252, 121)",
-                        "rgb(0, 234, 255)",
-                        "rgba(154, 14, 149, 0.63)"]
+            backgroundColor: "rgba(249, 47, 91, 0.78)"
             }],
         },
     });
