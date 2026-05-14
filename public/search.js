@@ -82,8 +82,8 @@ function showRecipes(data) {
         meals.forEach(recipe => {
             html += `
                 <div class = "recipe-card">
-                    <p>Recipes using ${recipe.strMeal}!</p>
-                    <a href = "/recipe/${recipe.idMeal}">
+                    <p>Recipes using ${fruit}!</p>
+                    <a href = "www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}">
                         <h3>${recipe.strMeal}</h3>
                     </a>
                     <img src = "${recipe.strMealThumb}" width = "150">
