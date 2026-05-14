@@ -27,6 +27,7 @@ nav li {
   display: inline-block;
   position: relative;
   padding: 10px;
+  font-size: large;
 }
 
 nav li:hover {
@@ -48,16 +49,14 @@ nav a:hover {
 }
 
 .fruitContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 20px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #nutritionOutput {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
 }
 
@@ -65,19 +64,24 @@ nav a:hover {
     flex: 1;
 }
 
+#recipeOutput {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 20px;
+}
+
 #fruitImage {
-    width: 250px;
-    height: auto;
-    border-radius: 12px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 12px;
 }
 
 .card {
-  width: 80%;
-  max-width: 600px;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
 }
 
 .searchButton {
