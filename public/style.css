@@ -74,18 +74,12 @@ nav a:hover {
   width: 200px;
   height: 200px;
   object-fit: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .card {
   flex: 1;
-  padding: 20px;
   border-radius: 12px;
   background: #f8f9fa;
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .searchButton {
