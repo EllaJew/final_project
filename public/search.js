@@ -86,22 +86,25 @@ function showRecipes(data) {
                 const ingredient = recipe[`strIngredient${i}`];
                 const measure = recipe[`strMeasure${i}`];
 
-                ingredients += `<li>${measure} ${ingredient}</li>`;
+                if (ingredient && ingredient.trim() !== "") {
+                ingredients += `<li>${measure} ${ingredient}</li>`;}
             }
-
-            html +=
-                `<div class = "recipe-card">
-                    <p>Recipes using ${data.name}!</p>
-                    <a href = "www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}">
+        
+            html += `<div class = "recipe-card">
+                    <p>Suggested Recipes:</p>
+                    <a href = "https://www.themealdb.com/meal/${recipe.idMeal}">
                         <h3>${recipe.strMeal}</h3>
                     </a>
                     <img src = "${recipe.strMealThumb}" width = "150">
+                    <h4>Ingredients</h4>
+                        <ul>
+                            ${ingredients}
+                        </ul>
                     <p>${recipe.strInstructions}</p>
-                </div>`
-            ;
+                    </div>`
+                ;
         });
     }
-
     document.getElementById("recipeOutput").innerHTML = html;
 }
 
