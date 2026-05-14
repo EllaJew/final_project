@@ -3,12 +3,13 @@ async function searchFruit(fruit) {
     const data = await res.json();
 
     console.log("Data:", data);
+    fruitContainer.style.display = "block";
 
     const nutritionText = document.querySelector(".nutrition-text");
 
     if (nutritionText) {
         nutritionText.innerHTML = 
-        `<h3>${data.name}</h3>
+        `<h3>${data.name}: Nutritional Information</h3>
         <p>Carbs: ${data.carbs} grams</p>
         <p>Protein: ${data.protein} grams</p>
         <p>Fat: ${data.fat} grams</p>
@@ -64,14 +65,17 @@ function showRecipes(data) {
     let html = "";
 
     if (!meals) {
-        html = "<p>No recipes found</p>";
+        html = "<p>No recipes found!</p>";
     } else {
         meals.forEach(recipe => {
             html += `
-                <div class="recipe-card">
-                    <h3>${recipe.strMeal}</h3>
-                    <img src="${recipe.strMealThumb}" width="150">
-                    <p>${recipe.strInstructions.slice(0, 100)}...</p>
+                <div class = "recipe-card">
+                    <p>Recipes: click links for more info!</p>
+                    <a href = "/recipe/${recipe.idMeal}">
+                        <h3>${recipe.strMeal}</h3>
+                    </a>
+                    <img src = "${recipe.strMealThumb}" width = "150">
+                    <p>${recipe.strInstructions}</p>
                 </div>
             `;
         });

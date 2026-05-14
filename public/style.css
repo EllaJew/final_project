@@ -71,9 +71,12 @@ nav a:hover {
 }
 
 #fruitImage {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .card {
@@ -81,6 +84,8 @@ nav a:hover {
   padding: 20px;
   border-radius: 12px;
   background: #f8f9fa;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .searchButton {
@@ -178,5 +183,5 @@ nav a:hover {
 .swiper-button-prev::after {
   font-size: 22px;
   font-weight: bold;
-  color: pink;
+  color: rgb(166, 255, 221);
 }
