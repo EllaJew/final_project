@@ -192,6 +192,10 @@ nav a:hover {
 
 .aboutContainer {
   width: 60%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
 }
 
 .aboutContainer p {
