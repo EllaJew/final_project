@@ -70,7 +70,7 @@ nav a:hover {
 }
 
 #recipeOutput {
-  height: 400px;
+  height: 425px;
   overflow-y: auto;
   padding: 20px;
   margin-right: 20px;
@@ -188,4 +188,13 @@ nav a:hover {
   font-size: 22px;
   font-weight: bold;
   color: rgb(166, 255, 221);
+}
+
+.aboutContainer {
+  width: 60%;
+}
+
+.aboutContainer p {
+  overflow-wrap: break-word;
+  word-break: normal;
 }
