@@ -78,7 +78,7 @@ nav a:hover {
 }
 
 .card {
-  width: 50%;
+  width: auto;
   border-radius: 12px;
   background: #f8f9fa;
 }
