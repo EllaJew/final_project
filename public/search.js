@@ -125,7 +125,7 @@ async function updateHome() {
 const fruit_list = ["apple", "lime", "lemon", "cherry", "banana", "orange", "pineapple", "avocado"];
 
 async function getFruitImage(fruit) {
-    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${fruit}`);
+    const res = await fetch(`https://www.themealdb.com/images/ingredients/${fruit}.png`);
     const data = await res.json();
 
     return data.meals?.[0]?.strMealThumb;
