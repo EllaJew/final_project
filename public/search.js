@@ -5,7 +5,9 @@ async function searchFruit(fruit) {
     console.log("Data:", data);
 
     const fruitContainer = document.getElementById("fruitContainer");
-    fruitContainer.style.display = "block";
+    if (fruitContainer) {
+        fruitContainer.style.display = "block";
+    }
 
     const nutritionText = document.querySelector(".nutrition-text");
 
