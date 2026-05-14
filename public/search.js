@@ -80,16 +80,25 @@ function showRecipes(data) {
         html = "<p>No recipes found!</p>";
     } else {
         meals.forEach(recipe => {
-            html += `
-                <div class = "recipe-card">
-                    <p>Recipes using ${fruit}!</p>
+            let ingredients = "";
+
+            for (let i = 1; i <= 20; i++) {
+                const ingredient = recipe[`strIngredient${i}`];
+                const measure = recipe[`strMeasure${i}`];
+
+                ingredients += `<li>${measure} ${ingredient}</li>`;
+            }
+
+            html +=
+                `<div class = "recipe-card">
+                    <p>Recipes using ${data.name}!</p>
                     <a href = "www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}">
                         <h3>${recipe.strMeal}</h3>
                     </a>
                     <img src = "${recipe.strMealThumb}" width = "150">
                     <p>${recipe.strInstructions}</p>
-                </div>
-            `;
+                </div>`
+            ;
         });
     }
 
