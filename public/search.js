@@ -3,6 +3,8 @@ async function searchFruit(fruit) {
     const data = await res.json();
 
     console.log("Data:", data);
+
+    const fruitContainer = document.getElementById("fruitContainer");
     fruitContainer.style.display = "block";
 
     const nutritionText = document.querySelector(".nutrition-text");
@@ -40,13 +42,21 @@ function fillChart(data) {
         type: "bar",
         data: {labels: ["Carbs", "Protein", "Fat", "Calories", "Sugar"],
         datasets: [{
-            label: `${data.name} Nutrition (based on 100 grams)`,
+            label: `${data.name} Nutrition (per 100 grams)`,
             options: {backgroundColor: "white"},
             data: [data.carbs, data.protein, data.fat, data.calories,
                     data.sugar],
             backgroundColor: "rgba(249, 47, 91, 0.78)"
             }],
         },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: `${data.name} Nutrition Bar Chart (per 100 grams)`
+                }
+            }
+        }
     });
 }
 
