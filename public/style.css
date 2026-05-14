@@ -70,7 +70,7 @@ nav a:hover {
 }
 
 #recipeOutput {
-  max-height: 400px;
+  height: 400px;
   overflow-y: auto;
   padding: 20px;
   margin-right: 20px;
