@@ -27,7 +27,7 @@ nav li {
   display: inline-block;
   position: relative;
   padding: 10px;
-  font-size: large;
+  font-size: larger;
 }
 
 nav li:hover {
@@ -71,10 +71,9 @@ nav a:hover {
 }
 
 #fruitImage {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  border-radius: 12px;
 }
 
 .card {

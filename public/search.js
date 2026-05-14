@@ -4,20 +4,26 @@ async function searchFruit(fruit) {
 
     console.log("Data:", data);
 
-    document.querySelector(".nutrition-text").innerHTML =
+    const nutritionText = document.querySelector(".nutrition-text");
+
+    if (nutritionText) {
+        nutritionText.innerHTML = 
         `<h3>${data.name}</h3>
         <p>Carbs: ${data.carbs} grams</p>
         <p>Protein: ${data.protein} grams</p>
         <p>Fat: ${data.fat} grams</p>
         <p>Calories: ${data.calories} calories</p>
         <p>Sugar: ${data.sugar} grams</p>`;
+    }
     
     fillChart(data);
 
-    document.getElementById("nutritionOutput").innerHTML = 
-    `<img id = "fruitImage" src = "https://www.themealdb.com/images/ingredients/${fruit}.png">`;
+    const image = document.getElementById("fruitImage");
 
-    document.getElementById("fruitImage").onerror = function () {this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg"; 
+    if (image) {
+        image.src = `https://www.themealdb.com/images/ingredients/${fruit}.png`;
+        image.onerror = function () 
+        {this.src = "https://t4.ftcdn.net/jpg/03/78/07/27/360_F_378072760_d5RaCcQ10ZkKMCCSPqNrzKA13F8dhO6A.jpg";}
     };
 }
 
