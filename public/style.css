@@ -30,7 +30,7 @@ nav li {
 }
 
 nav li:hover {
-  color: palevioletred;
+  color: rgb(165, 35, 79);
 }
 
 nav a {
@@ -52,6 +52,23 @@ nav a:hover {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: center;
+}
+
+#nutritionOutput {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.nutrition-text {
+    flex: 1;
+}
+
+#fruitImage {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
 }
 
 .card {
@@ -106,11 +123,6 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
-#fruitImage {
-  width: 150px;
-  margin-top: 10px;
-}
-
 #recentSearches {
   width: 100%;
   border-collapse: collapse;
@@ -137,7 +149,7 @@ nav a:hover {
 .swiper-slide img {
   width: 100%;
   height: 500px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   border-radius: 10px;
 }
