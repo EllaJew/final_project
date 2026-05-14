@@ -79,6 +79,7 @@ function showRecipes(data) {
     if (!meals) {
         html = "<p>No recipes found!</p>";
     } else {
+        html += "<h2>Recipes:</h2>";
         meals.forEach(recipe => {
             let ingredients = "";
 
@@ -91,7 +92,6 @@ function showRecipes(data) {
             }
         
             html += `<div class = "recipe-card">
-                    <p>Suggested Recipes:</p>
                     <a href = "https://www.themealdb.com/meal/${recipe.idMeal}">
                         <h3>${recipe.strMeal}</h3>
                     </a>
