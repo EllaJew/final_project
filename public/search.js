@@ -114,7 +114,7 @@ async function updateHome() {
     });
 }
 
-const fruit_list = [apple, lime, lemon, cherry, banana, orange, pineapple, avocado];
+const fruit_list = ["apple", "lime", "lemon", "cherry", "banana", "orange", "pineapple", "avocado"];
 
 async function getFruitImage(fruit) {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${fruit}`);
@@ -147,29 +147,30 @@ async function loadSlider() {
     });
 }
 
-const swiper = new Swiper(".randomFruitSwiper", {
-    loop: true,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-    }
-});
-
 window.onload = () => {
     const button = document.getElementById("searchButton");
 
     if (button) {
         button.addEventListener("click", async () => {
+            await loadSlider();
+
+            const swiper = new Swiper(".randomFruitSwiper", {
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+            });
+            
             const fruit = document.getElementById("fruitInput").value;
 
             await searchFruit(fruit);
             await getRecipes(fruit);
             await saveSearch();
-            await loadSlider();
             
             if (document.getElementById("tableOutput")) {
                 await updateHome();
