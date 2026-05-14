@@ -6,11 +6,11 @@ async function searchFruit(fruit) {
 
     document.getElementById("nutritionOutput").innerHTML =
         `<h3>${data.name}</h3>
-        <p>Carbs: ${data.carbs}</p>
-        <p>Protein: ${data.protein}</p>
-        <p>Fat: ${data.fat}</p>
-        <p>Calories: ${data.calories}</p>
-        <p>Sugar: ${data.sugar}</p>`;
+        <p>Carbs: ${data.carbs} grams</p>
+        <p>Protein: ${data.protein} grams</p>
+        <p>Fat: ${data.fat} grams</p>
+        <p>Calories: ${data.calories} calories</p>
+        <p>Sugar: ${data.sugar} grams</p>`;
     
     fillChart(data);
 
@@ -35,9 +35,17 @@ function fillChart(data) {
         data: {labels: ["Carbs", "Protein", "Fat", "Calories", "Sugar"],
         datasets: [{
             label: `${data.name} Nutrition (based on 100 grams)`,
+            options: {backgroundColor: "white"},
             data: [data.carbs, data.protein, data.fat, data.calories,
                     data.sugar]}],
-            backgroundColor: "rgba(6, 108, 57, 0.6)"
+            backgroundColor: [
+                "rgba(249, 47, 91, 0.78)",
+                "rgba(160, 214, 249, 0.89)", 
+                "rgba(75, 192, 192, 0.77)",
+                "rgb(254, 252, 121)",
+                "rgb(0, 234, 255)",
+                "rgba(236, 29, 229, 0.92)",
+            ]
         },
     });
 }
@@ -152,20 +160,6 @@ window.onload = () => {
 
     if (button) {
         button.addEventListener("click", async () => {
-            await loadSlider();
-
-            const swiper = new Swiper(".randomFruitSwiper", {
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                }
-            });
-            
             const fruit = document.getElementById("fruitInput").value;
 
             await searchFruit(fruit);
@@ -177,6 +171,19 @@ window.onload = () => {
             }
         });
     }
+
+    await loadSlider();
+    const swiper = new Swiper(".randomFruitSwiper", {
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+        });
     
     if (document.getElementById("tableOutput")) {
         updateHome();
