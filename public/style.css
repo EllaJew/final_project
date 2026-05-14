@@ -50,6 +50,7 @@ nav a:hover {
 
 .fruitContainer {
   display: flex;
+  justify-content: space-between;
   gap: 20px;
   align-items: flex-start;
 }
@@ -61,7 +62,7 @@ nav a:hover {
 }
 
 .nutrition-text {
-    flex: 1;
+  flex: 1;
 }
 
 #recipeOutput {

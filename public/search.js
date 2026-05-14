@@ -82,7 +82,7 @@ function showRecipes(data) {
         meals.forEach(recipe => {
             html += `
                 <div class = "recipe-card">
-                    <p>Recipes: click links for more info!</p>
+                    <p>Recipes using ${recipe.strMeal}!</p>
                     <a href = "/recipe/${recipe.idMeal}">
                         <h3>${recipe.strMeal}</h3>
                     </a>
