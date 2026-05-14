@@ -61,7 +61,7 @@ nav a:hover {
 }
 
 #nutritionOutput {
-  width: 35%;
+  width: 32%;
   display: inline-block;
   vertical-align: top;
 }
@@ -202,4 +202,11 @@ nav a:hover {
 .aboutContainer p {
   overflow-wrap: break-word;
   word-break: normal;
+}
+
+.helpContainer {
+  width: 40%;
+  margin: 40px auto 0 auto;
+  padding: 20px;
+  background-color: white;
 }
