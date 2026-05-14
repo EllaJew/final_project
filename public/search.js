@@ -155,7 +155,7 @@ async function loadSlider() {
     });
 }
 
-window.onload = () => {
+window.onload = async () => {
     const button = document.getElementById("searchButton");
 
     if (button) {
@@ -173,7 +173,7 @@ window.onload = () => {
     }
 
     await loadSlider();
-    const swiper = new Swiper(".randomFruitSwiper", {
+    new Swiper(".randomFruitSwiper", {
                 loop: true,
                 pagination: {
                     el: ".swiper-pagination",

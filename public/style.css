@@ -1,13 +1,15 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: rgb(245, 190, 198);
+    background-color: rgb(248, 198, 206);
 }
 
 #nav {
-    background-color: rgb(85, 237, 161);
-    color: white;
-    padding: 10px;
-    text-align: center;
+    background-color: rgb(104, 255, 179);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 nav li {
@@ -17,18 +19,21 @@ nav li {
 }
 
 nav li:hover {
-  background-color: palevioletred;
-  color: white;
+  color: palevioletred;
 }
 
 nav a {
+  color: white;
   text-decoration: none;
-  color: blue;
+  margin: 0 12px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
 nav a:hover {
-  background-color: black;
-  color: white;
+  color: palevioletred;
+  transform: translateY(-1px);
 }
 
 .fruitContainer {
