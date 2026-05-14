@@ -72,7 +72,8 @@ nav a:hover {
 #recipeOutput {
   max-height: 500px;
   overflow-y: auto;
-  padding-right: 20px;
+  padding: 20px;
+  margin-right: 20px;
   width: 60%;
   word-wrap: break-word;
   display: inline-block;
