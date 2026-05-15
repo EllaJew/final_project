@@ -15,3 +15,10 @@ and_chr 147, and_ff 150, and_qq 14.9, and_uc 15.5, android 147, chrome 148, chro
 [Developer Manual Link](#developer-manual)
 
 # Developer Manual
+
+# Installation and Dependencies
+1) Clone this repository using `git clone`: https://github.com/EllaJew/final_project.git
+2) Install the following dependencies using `npm install`: Node.js, Supabase, Express, dotenv, body-parser
+3) Run the app using `npm start`
+
+# How to Run the Application on a Server
