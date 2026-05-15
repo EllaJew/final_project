@@ -26,15 +26,28 @@ and_chr 147, and_ff 150, and_qq 14.9, and_uc 15.5, android 147, chrome 148, chro
 2) Install Express (completed in prior step): make sure that you have already run `npm install express`.
 3) Create the server file: create an `index.js` file and use `express.static` to serve your folder that contains your static `.html`, `.css`, and `.js` files.
 
-# APIs for Application
-`app.get("/", (req, res) =>`: retrieves the root of Fruit for Thought, which is `home_page.html` 
-`app.get("/search", (req, res) =>`: retrieves the `search_page.html` file and sends it to the browser whenever it is requested
-`app.get("/about", (req, res) =>`: retrieves the `about_page.html` file and sends it to the browser whenever it is requested
-`app.get("/fruit/:name", async (req, res) =>`: retrieves fruit nutritional info from Fruityvice API 
-`app.get("/recipes/:fruit", async (req, res) =>`: retrieves recipe details from TheMealDB API for a specific fruit that the user inputs
-`app.post("/user_history", async (req, res) =>`: submits a new entry into the `user_history` table on Supabase, detailing the fruit the user searched and what day/time the search occurred
-`app.get("/user_history", async (req, res) =>`: retrieves all the entries from the `user_history` table on Supabase
+# Software Tests
+N/A
 
-# Expectations and Future Development
+# APIs for Application
+1) `app.get("/", (req, res) =>`: retrieves the root of Fruit for Thought, which is `home_page.html`
+2) `app.get("/search", (req, res) =>`: retrieves the `search_page.html` file and sends it to the browser whenever it is requested
+3) `app.get("/about", (req, res) =>`: retrieves the `about_page.html` file and sends it to the browser whenever it is requested
+4) `app.get("/fruit/:name", async (req, res) =>`: retrieves fruit nutritional info from Fruityvice API
+5) `app.get("/recipes/:fruit", async (req, res) =>`: retrieves recipe details from TheMealDB API for a specific fruit that the user inputs
+6) `app.post("/user_history", async (req, res) =>`: submits a new entry into the `user_history` table on Supabase, detailing the fruit the user searched and what day/time the search occurred
+7) `app.get("/user_history", async (req, res) =>`: retrieves all the entries from the `user_history` table on Supabase
+
+# Known Issues
+1) MIME type mismatch error on Vercel: the server responds with text/html instead of application/javascript or text/css. It is commonly caused by incorrect paths or routing issues. To fix this error, you can define your routes in a `vercel.json` file to make sure that your static files are being served correctly.
+2) Starting May 30, new Supabase projects will not expose tables in the "public" schema to the Data API by default. Any table you create in "public" after that date requires an explicit GRANT before supabase-js can access it.
+
+# Roadmap for Future Development
+1) Next Up (summer 2026):
+   1) Upgrade the UI for a more modern-appearance
+   2) Implement another food API for additional nutritional information
+3) Later (2027 and beyond):
+   1) Utilize React to break down the application into more manageable pieces
+   2) Create a new feature: calorie counter and journal
 
 
