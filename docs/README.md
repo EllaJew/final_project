@@ -1,6 +1,9 @@
 # final_project
 Final Project for INST377
 
+# Vercel URL
+https://final-project-bay-mu-70.vercel.app/
+
 # Title
 Fruit for Thought
 
@@ -54,7 +57,7 @@ N/A
 # Roadmap for Future Development
 1) Next Up (summer 2026):
    1) Upgrade the UI for a more modern-appearance
-   2) Implement another food API for additional nutritional information
+   2) Implement another food API if possible for additional nutritional information
 3) Later (2027 and beyond):
    1) Utilize React to break down the application into more manageable pieces
-   2) Create a new feature: calorie counter and journal
+   2) Create a new feature: calorie counter or journal
