@@ -46,8 +46,7 @@ function fillChart(data) {
         datasets: [{
             label: `${data.name} Nutrition (per 100 grams)`,
             options: {backgroundColor: "white"},
-            data: [data.carbs, data.protein, data.fat, data.calories,
-                    data.sugar],
+            data: [data.carbs, data.protein, data.fat, data.sugar],
             backgroundColor: "rgba(249, 47, 91, 0.78)"
             }],
         },
