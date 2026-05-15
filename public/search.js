@@ -42,7 +42,7 @@ function fillChart(data) {
 
     barChart = new Chart(chart, {
         type: "bar",
-        data: {labels: ["Carbs", "Protein", "Fat", "Calories", "Sugar"],
+        data: {labels: ["Carbs", "Protein", "Fat", "Sugar"],
         datasets: [{
             label: `${data.name} Nutrition (per 100 grams)`,
             options: {backgroundColor: "white"},
